@@ -46,7 +46,7 @@ export default createStore({
           context.commit('setJobs', response.data.data);
         })
         .catch((error) => {
-          console.log(error.response.data);
+          console.log(error);
         });
     },
     async filterJobs(context, payload) {

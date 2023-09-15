@@ -42,7 +42,7 @@ start: env
 .PHONY: env
 env:
 ifeq ($(env),dev)
-	cp .env.develompment .env
+	cp .env.development .env
 else ifeq ($(env),prod)
 	cp .env.production .env
 else
