@@ -38,6 +38,10 @@
             <i class="fas fa-clock"></i>
             <p>{{ props.job.job_type }}</p>
           </div>
+          <div class="point-right">
+            <i class="fas fa-share-alt"></i>
+            <p>{{ props.job.job_category }}</p>
+          </div>
         </div>
       </div>
       <div class="job-card__description">
@@ -71,7 +75,6 @@
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue';
 import { JobType } from '@/types/jobTypes';
 import router from '@/router';
 
@@ -81,13 +84,6 @@ const props = defineProps({
     required: true
   }
 });
-
-watch(
-  () => props.job,
-  () => {
-    console.log(props.job);
-  }
-);
 </script>
 
 <style lang="scss" scoped>

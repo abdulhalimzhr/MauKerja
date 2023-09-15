@@ -1,13 +1,19 @@
 <template>
-  <nav-bar />
-  <search-bar />
-  <router-view />
+  <header>
+    <nav-bar />
+  </header>
+  <main class="flex-grow min-h-screen">
+    <search-bar />
+    <router-view :key="$route.fullPath" />
+  </main>
+  <footer-section />
 </template>
 
 <script setup lang="ts">
 import NavBar from '@/components/NavBar.vue';
 import SearchBar from './components/SearchBar.vue';
 import { onMounted } from 'vue';
+import FooterSection from './components/FooterSection.vue';
 
 onMounted(() => {
   document.title = 'Mau Kerja - Find your dream job';
@@ -27,19 +33,19 @@ h3 {
 }
 
 h1 {
-  @apply font-bold;
+  @apply font-bold #{!important};
   color: #414141;
   font-size: 16pt;
 }
 
 h2 {
-  @apply font-normal;
+  @apply font-normal #{!important};
   color: #414141;
   font-size: 12pt;
 }
 
 h3 {
-  @apply font-normal;
+  @apply font-normal #{!important};
   color: #b2b2b2;
   font-size: 11pt;
 }

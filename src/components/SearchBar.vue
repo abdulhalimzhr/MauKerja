@@ -8,7 +8,7 @@
               type="text"
               id="job-title"
               :placeholder="`${$t('jobTitle')}, ${$t('company')}`"
-              required
+              v-model="jobTitle"
             />
           </div>
           <div class="search-bar__form-input">
@@ -16,16 +16,14 @@
               type="text"
               id="location"
               :placeholder="$t('location')"
-              required
+              v-model="location"
             />
           </div>
           <div class="search-bar__form-input">
-            <select name="" id="min-salary">
-              <option value="" disabled selected>
-                Min {{ $t('salary') }} (MYR)
-              </option>
+            <select id="min-salary" v-model="selectedSalary">
+              <option value="" selected>Min {{ $t('salary') }} (MYR)</option>
               <option
-                value="salary.value"
+                :value="JSON.stringify(salary.value)"
                 v-for="(salary, i) in minSalary"
                 :key="i"
               >
@@ -34,7 +32,11 @@
             </select>
           </div>
           <div class="search-bar__form-input">
-            <button class="search-bar__form-button">
+            <button
+              type="button"
+              class="search-bar__form-button"
+              @click="searchJob"
+            >
               <i class="fas fa-search"></i>
               {{ $t('findJob') }}
             </button>
@@ -47,24 +49,60 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import router from '@/router';
+
+const jobTitle = ref('');
+const location = ref('');
+const selectedSalary = ref('');
+
 const minSalary = ref([
   {
-    value: 0,
+    value: {
+      min: 0,
+      max: 1000
+    },
     label: '0 - RM 1000'
   },
   {
-    value: 1,
+    value: {
+      min: 1000,
+      max: 4000
+    },
     label: 'RM 1000 - RM 4000'
   },
   {
-    value: 2,
+    value: {
+      min: 4000,
+      max: 7000
+    },
     label: 'RM 4000 -  RM 7000'
   },
   {
-    value: 3,
+    value: {
+      min: 7000,
+      max: 10000
+    },
     label: '> RM 7000'
   }
 ]);
+
+const searchJob = () => {
+  if (jobTitle.value || location.value || selectedSalary.value) {
+    const query: {
+      jobTitle?: string;
+      location?: string;
+      salary?: string;
+    } = {};
+
+    jobTitle.value && (query.jobTitle = jobTitle.value);
+    location.value && (query.location = location.value);
+    selectedSalary.value && (query.salary = selectedSalary.value);
+
+    router.push({ name: 'SearchResult', query });
+  } else {
+    router.push({ name: 'AllJobs' });
+  }
+};
 </script>
 
 <style lang="scss" scoped>

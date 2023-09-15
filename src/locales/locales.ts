@@ -19,7 +19,8 @@ export const en = {
   requirements: 'Requirements',
   responsibilities: 'Responsibilities',
   benefits: 'Benefits',
-  findJob: 'Find Job'
+  findJob: 'Find Job',
+  searchNotFound: 'No job found. Please try again.'
 };
 
 export const ms = {
@@ -43,5 +44,6 @@ export const ms = {
   requirements: 'Kelayakan',
   responsibilities: 'Tanggungjawab',
   benefits: 'Faedah',
-  findJob: 'Cari Pekerjaan'
+  findJob: 'Cari Pekerjaan',
+  searchNotFound: 'Tiada pekerjaan dijumpai. Sila cuba lagi.'
 };

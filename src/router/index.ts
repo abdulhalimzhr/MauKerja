@@ -12,6 +12,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/details/:id',
     name: 'JobDetail',
     component: DetailView
+  },
+  {
+    path: '/search',
+    name: 'SearchResult',
+    component: HomeView
   }
 ];
 
