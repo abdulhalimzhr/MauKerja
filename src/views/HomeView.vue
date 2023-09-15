@@ -14,7 +14,7 @@
 <script setup lang="ts">
 import JobCard from '@/components/JobCard.vue';
 import router from '@/router';
-import { computed, onMounted, watch } from 'vue';
+import { computed, onMounted } from 'vue';
 import { useStore } from 'vuex';
 
 const store = useStore();
@@ -28,7 +28,6 @@ const checkSearch = () => {
 
   if (Object.keys(query).length > 0) {
     const { jobTitle, location, salary } = query;
-    isSearch.value = true;
 
     const parsedSalary = salary ? JSON.parse(salary) : salary;
 

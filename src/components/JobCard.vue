@@ -24,7 +24,11 @@
             <i class="fa fa-money-bill-wave"></i>
             <p>
               {{
-                `${props.job.salary.currency}${props.job.salary.min} - ${props.job.salary.currency}${props.job.salary.max}`
+                `${props.job.salary.currency}${numberFormatter.format(
+                  props.job.salary.min
+                )} - ${props.job.salary.currency}${numberFormatter.format(
+                  props.job.salary.max
+                )}`
               }}
             </p>
           </div>
@@ -77,6 +81,7 @@
 <script setup lang="ts">
 import { JobType } from '@/types/jobTypes';
 import router from '@/router';
+import { numberFormatter } from '@/helpers/helper';
 
 const props = defineProps({
   job: {
