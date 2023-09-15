@@ -58,13 +58,13 @@
       <div class="job-card__action-save">
         <button class="job-card__action-save-button">
           <i class="fa-solid fa-heart"></i>
-          Save Job
+          {{ $t('saveJob') }}
         </button>
       </div>
       <div class="job-card__action-apply">
         <button class="job-card__action-apply-button">
           <i class="fa-solid fa-briefcase"></i>
-          Apply Now
+          {{ $t('applyNow') }}
         </button>
       </div>
     </div>
@@ -101,6 +101,7 @@ const props = defineProps({
 
   &__action {
     @apply bg-white p-4 rounded-bl-lg rounded-br-lg flex flex-wrap justify-between items-center;
+    @apply text-xs md:text-sm;
 
     &-save {
       @apply w-1/2 text-center;
@@ -111,7 +112,7 @@ const props = defineProps({
     }
 
     & button {
-      @apply text-gray-900 text-sm;
+      @apply text-gray-900;
     }
   }
 

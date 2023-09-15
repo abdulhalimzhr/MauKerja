@@ -7,6 +7,15 @@
 <script setup lang="ts">
 import NavBar from '@/components/NavBar.vue';
 import SearchBar from './components/SearchBar.vue';
+import { onMounted } from 'vue';
+
+onMounted(() => {
+  document.title = 'Mau Kerja - Find your dream job';
+
+  if (localStorage.getItem('locale') === null) {
+    localStorage.setItem('locale', 'en');
+  }
+});
 </script>
 
 <style lang="scss">

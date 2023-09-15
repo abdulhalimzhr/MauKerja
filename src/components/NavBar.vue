@@ -46,17 +46,25 @@
         <ul class="navbar__links">
           <li>
             <router-link :to="'/'" :class="'navbar__link-item'">
-              All Job
+              {{ $t('allJob') }}
             </router-link>
           </li>
           <li>
-            <a href="#" class="navbar__link-item">Tools</a>
+            <a href="#" class="navbar__link-item">{{ $t('tools') }}</a>
           </li>
           <li>
-            <a href="#" class="navbar__link-item">Help</a>
+            <a href="#" class="navbar__link-item">{{ $t('help') }}</a>
           </li>
           <li>
-            <a href="#" class="navbar__link-item">Blog</a>
+            <a href="#" class="navbar__link-item">{{ $t('blog') }}</a>
+          </li>
+          <li class="md:hidden flex justify-center items-center">
+            <button
+              class="bg-white text-blue-500 hover:bg-blue-200 py-1 px-2 rounded-full ml-4"
+              @click="toggleLanguage"
+            >
+              {{ currentLocale === 'en' ? '🇲🇾' : '🇺🇸' }}
+            </button>
           </li>
         </ul>
       </div>
@@ -64,7 +72,7 @@
         <button
           type="button"
           @click="toggleDarkMode"
-          class="btn__toggle-switch dark:bg-gray-500 dark:text-white bg-gray-200"
+          class="btn__toggle-switch"
           role="switch"
           aria-checked="false"
         >
@@ -101,6 +109,12 @@
             </span>
           </span>
         </button>
+        <button
+          class="bg-white text-blue-500 hover:bg-blue-200 py-1 px-2 rounded-full ml-4"
+          @click="toggleLanguage"
+        >
+          {{ currentLocale === 'en' ? '🇲🇾' : '🇺🇸' }}
+        </button>
       </div>
     </div>
   </nav>
@@ -110,8 +124,11 @@
 import router from '@/router';
 import { onMounted, watch } from 'vue';
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
+const { locale } = useI18n({ useScope: 'global' });
 
 const isDarkMode = ref(localStorage.getItem('isDarkMode') === 'true' || false);
+const currentLocale = ref(localStorage.getItem('locale') || 'en');
 
 const toggleMobileMenu = () => {
   const navbar = document.getElementById('navbar-default');
@@ -138,6 +155,12 @@ const checkDarkMode = (isDark: boolean) => {
   } else {
     document.documentElement.classList.remove('dark');
   }
+};
+
+const toggleLanguage = () => {
+  currentLocale.value = currentLocale.value === 'en' ? 'ms' : 'en';
+  locale.value = currentLocale.value;
+  localStorage.setItem('locale', currentLocale.value);
 };
 
 watch(isDarkMode, (newValue) => {
@@ -170,7 +193,8 @@ a {
   }
 
   &__btn-switch {
-    @apply hidden md:block md:w-1/6 mt-auto;
+    @apply hidden md:w-1/6 mt-auto;
+    @apply md:flex md:items-center md:justify-end;
   }
 
   &__links {
@@ -197,6 +221,7 @@ a {
 }
 .btn {
   &__toggle-switch {
+    @apply dark:bg-gray-500 dark:text-white bg-gray-200;
     @apply relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent;
     @apply transition-colors duration-200 ease-in-out focus:outline-none focus:ring-1 focus:ring-gray-500 focus:ring-offset-1;
   }
