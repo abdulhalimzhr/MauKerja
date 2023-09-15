@@ -33,12 +33,14 @@ Tested on Windows 11 with Hyper-V Docker (Because WSL is too slow).
 
 4. After the setup is completed, you can access the application through http://localhost:8080
 
-### Notes
+### Notes!
+![image](https://github.com/abdulhalimzhr/MauKerja/assets/75671219/f5fe4a4f-3cd2-40a9-a4a8-98cbbc3cc7e3)
 
 Currently, the API server at http://feapi.ajt.my/jobs consistently triggers CORS issues when accessed within the project. Consequently, I had to use the devServer with a proxy in order to meet the project's deadline. If you encounter any CORS-related problems, kindly utilize the following command to launch the application:
 
         make build env=dev
 
+And for now, this project can only be accessed locally because of the CORS issue. Thank you for your consideration :D
 ## Additional Information
 
 ### Date of Submission
@@ -58,29 +60,37 @@ Detailed Dashboard: [link](https://wakatime.com/@abdulhalimzhr/projects/jynqrkjg
 ### Preview
 
 1. Home Page (Dark Mode)
+   ![image](https://github.com/abdulhalimzhr/MauKerja/assets/75671219/85db2c99-11e8-4a4a-923c-ed046313c86c)
 
-2. Home Page (Light Mode)
+3. Home Page (Light Mode)
+   ![image](https://github.com/abdulhalimzhr/MauKerja/assets/75671219/052f2652-d3e3-4897-9f8a-017ca77a9773)
 
-3. Home Page (Mobile Dark Mode)
+4. Home Page (Mobile Dark Mode)
+   
+5. Home Page (Mobile Light Mode)
 
-4. Home Page (Mobile Light Mode)
+6. Job Details Page (Dark Mode)
+   ![image](https://github.com/abdulhalimzhr/MauKerja/assets/75671219/35d0baa0-2e82-45af-9933-25a79f7ecba4)
 
-5. Job Details Page (Dark Mode)
+7. Job Details Page (Light Mode)
+   ![image](https://github.com/abdulhalimzhr/MauKerja/assets/75671219/e767de29-85a4-43a9-b3a5-bd5304de4f7f)
 
-6. Job Details Page (Light Mode)
+8. Job Details Page (Mobile Dark Mode)
 
-7. Job Details Page (Mobile Dark Mode)
+9. Job Details Page (Mobile Light Mode)
 
-8. Job Details Page (Mobile Light Mode)
+10. Job Search Page (Dark Mode)
+   ![image](https://github.com/abdulhalimzhr/MauKerja/assets/75671219/44863a86-0e95-4d51-acca-fbe035b1c1aa)
 
-9. Job Search Page (Dark Mode)
+11. Job Search Page (Light Mode)
+   ![image](https://github.com/abdulhalimzhr/MauKerja/assets/75671219/f5e0be72-bec1-4cbe-9777-0afe482ea200)
 
-10. Job Search Page (Light Mode)
+12. Job Search Page (Mobile Dark Mode)
 
-11. Job Search Page (Mobile Dark Mode)
+13. Job Search Page (Mobile Light Mode)
 
-12. Job Search Page (Mobile Light Mode)
+14. Locale (EN)
+   ![image](https://github.com/abdulhalimzhr/MauKerja/assets/75671219/5cff7d9d-b8de-4116-b397-d3ade128139c)
 
-13. Locale (EN)
-
-14. Locale (MY)
+15. Locale (MY)
+   ![image](https://github.com/abdulhalimzhr/MauKerja/assets/75671219/9d61549a-4f93-4b69-8b42-8490876f0e2e)
