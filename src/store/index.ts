@@ -52,9 +52,11 @@ export default createStore({
     async filterJobs(context, payload) {
       const params = Object.assign(
         {},
-        payload.jobTitle && { 'filter[title]': payload.jobTitle },
+        payload.jobTitle && {
+          'filter[title]': payload.jobTitle,
+          'filter[company]': payload.company
+        },
         payload.location && { 'filter[state]': payload.location },
-        payload.company && { 'filter[company]': payload.company },
         payload.salary &&
           payload.salary.min !== undefined && {
             'filter[salary_min]': payload.salary.min

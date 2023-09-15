@@ -48,8 +48,9 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import router from '@/router';
+import store from '@/store';
 
 const jobTitle = ref('');
 const location = ref('');
@@ -87,22 +88,31 @@ const minSalary = ref([
 ]);
 
 const searchJob = () => {
-  if (jobTitle.value || location.value || selectedSalary.value) {
+  if (jobTitle.value) {
     const query: {
-      jobTitle?: string;
+      jobTitle: string;
       location?: string;
       salary?: string;
-    } = {};
+    } = {
+      jobTitle: jobTitle.value
+    };
 
-    jobTitle.value && (query.jobTitle = jobTitle.value);
     location.value && (query.location = location.value);
     selectedSalary.value && (query.salary = selectedSalary.value);
 
     router.push({ name: 'SearchResult', query });
-  } else {
-    router.push({ name: 'AllJobs' });
   }
 };
+
+watch(
+  () => jobTitle.value,
+  () => {
+    if (!jobTitle.value && router.currentRoute.value.name === 'SearchResult') {
+      store.dispatch('getJobs');
+      router.push({ name: 'AllJobs' });
+    }
+  }
+);
 </script>
 
 <style lang="scss" scoped>
