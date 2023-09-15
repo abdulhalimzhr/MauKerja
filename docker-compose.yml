@@ -1,0 +1,14 @@
+version: '3'
+services:
+  maukerja:
+    container_name: maukerja-frontend
+    build:
+      context: ./
+    ports:
+      - '8080:8080'
+    networks:
+      - mknetwork
+    volumes:
+      - ./:/app
+networks:
+  mknetwork:

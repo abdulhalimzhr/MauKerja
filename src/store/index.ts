@@ -36,7 +36,7 @@ export default createStore({
     },
     async getJobs(context) {
       await axios
-        .get('/jobs', {
+        .get(`${process.env.VUE_APP_API_BASE_URL}/jobs`, {
           headers: {
             'Content-Type': 'application/json',
             Accept: 'application/json'
@@ -66,7 +66,7 @@ export default createStore({
       );
 
       await axios
-        .get('/jobs', {
+        .get(`${process.env.VUE_APP_API_BASE_URL}/jobs`, {
           params,
           headers: {
             'Content-Type': 'application/json',
