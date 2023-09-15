@@ -40,12 +40,6 @@ const checkSearch = () => {
   }
 };
 
-watch(router.currentRoute.value.query, () => {
-  if (isSearch.value) {
-    checkSearch();
-  }
-});
-
 onMounted(() => {
   if (!isSearch.value) {
     store.dispatch('getJobs');

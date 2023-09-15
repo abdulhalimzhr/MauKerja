@@ -58,13 +58,54 @@
           <li>
             <a href="#" class="navbar__link-item">{{ $t('blog') }}</a>
           </li>
-          <li class="md:hidden flex justify-center items-center">
+          <li class="navbar__btn-switch navbar__btn-switch--mobile p-4">
             <button
-              class="bg-white text-blue-500 hover:bg-blue-200 py-1 px-2 rounded-full ml-4"
-              @click="toggleLanguage"
+              type="button"
+              @click="toggleDarkMode"
+              class="btn__toggle-switch"
+              role="switch"
+              aria-checked="false"
             >
-              {{ currentLocale === 'en' ? '🇲🇾' : '🇺🇸' }}
+              <span class="sr-only">Dark mode toggle</span>
+              <span
+                :class="
+                  isDarkMode
+                    ? 'translate-x-5 bg-gray-700'
+                    : 'translate-x-0 bg-white'
+                "
+                class="pointer-events-none relative inline-block h-5 w-5 transform rounded-full shadow ring-0 transition duration-200 ease-in-out"
+              >
+                <span
+                  :class="
+                    isDarkMode
+                      ? 'opacity-0 ease-out duration-100'
+                      : 'opacity-100 ease-in duration-200'
+                  "
+                  class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
+                  aria-hidden="true"
+                >
+                  <i class="fa-solid fa-moon"></i>
+                </span>
+                <span
+                  :class="
+                    isDarkMode
+                      ? 'opacity-100 ease-in duration-200'
+                      : 'opacity-0 ease-out duration-100'
+                  "
+                  class="absolute inset-0 flex h-full w-full items-center justify-center transition-opacity"
+                  aria-hidden="true"
+                >
+                  <i class="fa-solid fa-sun"></i>
+                </span>
+              </span>
             </button>
+            <button
+              class="btn-locale"
+              :class="
+                currentLocale == 'en' ? 'btn-locale--ms' : 'btn-locale--en'
+              "
+              @click="toggleLanguage"
+            ></button>
           </li>
         </ul>
       </div>
@@ -192,8 +233,13 @@ a {
   }
 
   &__btn-switch {
-    @apply hidden md:w-1/6 mt-auto;
-    @apply md:flex md:items-center md:justify-end;
+    @apply md:w-1/6 mt-auto;
+    @apply hidden md:flex md:items-center md:justify-end;
+    @apply items-center justify-center;
+
+    &--mobile {
+      @apply flex md:hidden;
+    }
   }
 
   &__links {
