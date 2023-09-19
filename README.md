@@ -1,7 +1,3 @@
-## MauKerja.my
-
-A coding test for MauKerja.my.
-
 ## Description
 
 This project is a Web portals to jobseekers and employers to connect. This project is built using Vue.js 3 with Tailwind CSS.
